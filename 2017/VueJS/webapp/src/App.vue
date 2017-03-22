@@ -12,6 +12,7 @@
 
     <!-- Cargar componente -->
     <home></home>
+    <contacto></contacto>
   </div>
 </template>
 
