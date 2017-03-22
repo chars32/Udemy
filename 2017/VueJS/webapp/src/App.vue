@@ -4,10 +4,10 @@
     <h2>{{msg}}</h2>
     
     <ul>
-      <li><a href="https://vuejs.org" target="_blank">Home</a></li>
-      <li><a href="https://forum.vuejs.org" target="_blank">Restaurantes</a></li>
-      <li><a href="https://gitter.im/vuejs/vue" target="_blank">Restaurante destacado</a></li>
-      <li><a href="https://twitter.com/vuejs" target="_blank">Contacto</a></li>
+      <li><router-link to="/home">Home</router-link></li>
+      <li><router-link to="/restaurantes">Restaurantes</router-link></li>
+      <li><router-link :to="{name: 'restaurante-destacado', params: {id:16}}">Restaurante destacado</router-link></li>
+      <li><router-link to="/contacto">Contacto</router-link></li>
     </ul>
 
     <router-view></router-view>

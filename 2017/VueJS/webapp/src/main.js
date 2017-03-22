@@ -3,10 +3,14 @@ import VueRouter from 'vue-router'
 import App from './App.vue'
 import Home from './Home.vue'
 import Contacto from './Contacto.vue'
+import RestauranteTop from './RestauranteTop.vue'
+import RestaurantesList from './RestaurantesList.vue'
 
 Vue.use(VueRouter);
 
 const routes = [
+  {path: '/restaurantes', component: RestaurantesList},
+  {path: '/restaurante-destacado/:id', name: 'restaurante-destacado', component: RestauranteTop},
   {path: '/contacto', component: Contacto},
   {path: '/home', component: Home},
   {path: '/', component: Home}
