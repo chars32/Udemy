@@ -10,9 +10,11 @@
       <li><a href="https://twitter.com/vuejs" target="_blank">Contacto</a></li>
     </ul>
 
+    <router-view></router-view>
+
     <!-- Cargar componente -->
-    <home></home>
-    <contacto></contacto>
+    <!-- <home></home> -->
+    <!-- <contacto></contacto> -->
   </div>
 </template>
 
