@@ -9,6 +9,8 @@ import RestaurantesList from './RestaurantesList.vue'
 Vue.use(VueRouter);
 
 const routes = [
+  {path: '/restaurante/:id', name: 'restaurante', component: RestauranteTop},
+  {path: '/editar-restaurante/:id', name: 'editar-restaurante', component: RestauranteTop},
   {path: '/restaurantes', component: RestaurantesList},
   {path: '/restaurante-destacado/:id', name: 'restaurante-destacado', component: RestauranteTop},
   {path: '/contacto', component: Contacto},
