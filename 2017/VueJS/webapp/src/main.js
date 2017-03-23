@@ -5,11 +5,12 @@ import Home from './Home.vue'
 import Contacto from './Contacto.vue'
 import RestauranteTop from './RestauranteTop.vue'
 import RestaurantesList from './RestaurantesList.vue'
+import Restaurante from './Restaurante.vue'
 
 Vue.use(VueRouter);
 
 const routes = [
-  {path: '/restaurante/:id', name: 'restaurante', component: RestauranteTop},
+  {path: '/restaurante/:id', name: 'restaurante', component: Restaurante},
   {path: '/editar-restaurante/:id', name: 'editar-restaurante', component: RestauranteTop},
   {path: '/restaurantes', component: RestaurantesList},
   {path: '/restaurante-destacado/:id', name: 'restaurante-destacado', component: RestauranteTop},
