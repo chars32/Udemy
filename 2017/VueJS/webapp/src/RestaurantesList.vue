@@ -1,13 +1,33 @@
 <template>
-  <h2>Esto es la {{texto}}</h2>
+<div>
+  <ul id="restaurantes-list" v-if="restaurantes != null">
+    <li v-for="restaurante in restaurantes">
+      <strong>{{restaurante.nombre}}</strong>
+    </li>
+  </ul>
+  <span v-else>Cargando restaurantes...</span>
+</div>
 </template>
 
 <script>
+import axios from 'axios';
 export default {
   name: 'restaurantes-list',
+  mounted(){
+    this.getRestaurantes();
+  },
   data () {
     return {
-      texto: 'Pagina Restaurantes LIST'
+      texto: 'Pagina Restaurantes LIST',
+      restaurantes: null
+    }
+  },
+  methods: {
+    getRestaurantes(){
+      axios.get('http://localhost/slim/restaurantes-api.php/restaurantes')
+        .then((respuesta) => {
+          this.restaurantes = respuesta.data.data;
+        });
     }
   }
 }
