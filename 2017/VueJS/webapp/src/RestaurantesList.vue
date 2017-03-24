@@ -6,6 +6,14 @@
       <p>
         <router-link :to="{name: 'restaurante', params:{id: restaurante.id}}">Ver</router-link>
         <router-link :to="{name: 'editar-restaurante', params:{id: restaurante.id}}">Editar</router-link>
+        <span v-if="showBorrar != restaurante.id">
+          <a @click="borrarRestaurante(restaurante.id)" style="cursor:pointer;">Eliminar</a>
+        </span>
+        <span v-else>
+          <p>¿Estas seguro de querer borrarlo?</p>
+          <button @click="cancelarBorrado()">Cancelar</button>
+          <button @click="confirmarBorrado(restaurante.id)">Borrar</button>
+        </span>
       </p>
     </li>
   </ul>
@@ -23,7 +31,8 @@ export default {
   data () {
     return {
       texto: 'Pagina Restaurantes LIST',
-      restaurantes: null
+      restaurantes: null,
+      showBorrar: null
     }
   },
   methods: {
@@ -31,6 +40,19 @@ export default {
       axios.get('http://localhost/slim/restaurantes-api.php/restaurantes')
         .then((respuesta) => {
           this.restaurantes = respuesta.data.data;
+        });
+    },
+    borrarRestaurante(id){
+      this.showBorrar = id;
+    },
+    cancelarBorrado(){
+      this.showBorrar = null;
+    },
+    confirmarBorrado(id){
+      axios.get('http://localhost/slim/restaurantes-api.php/delete-restaurante/'+id)
+        .then((respuesta)=>{
+          this.showBorrar = null;
+          this.getRestaurantes();
         });
     }
   }
