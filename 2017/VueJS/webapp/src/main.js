@@ -7,13 +7,14 @@ import RestauranteTop from './RestauranteTop.vue'
 import RestaurantesList from './RestaurantesList.vue'
 import Restaurante from './Restaurante.vue'
 import RestauranteAdd from './RestauranteAdd.vue'
+import RestauranteEdit from './RestauranteEdit.vue'
 
 Vue.use(VueRouter);
 
 const routes = [
   {path: '/crear-restaurante/', name: 'crear-restaurante', component: RestauranteAdd},
+  {path: '/editar-restaurante/:id', name: 'editar-restaurante', component: RestauranteEdit},
   {path: '/restaurante/:id', name: 'restaurante', component: Restaurante},
-  {path: '/editar-restaurante/:id', name: 'editar-restaurante', component: RestauranteTop},
   {path: '/restaurantes', component: RestaurantesList},
   {path: '/restaurante-destacado/:id', name: 'restaurante-destacado', component: RestauranteTop},
   {path: '/contacto', component: Contacto},

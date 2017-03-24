@@ -6,6 +6,7 @@
     <ul>
       <li><router-link to="/home">Home</router-link></li>
       <li><router-link to="/crear-restaurante">Crear restaurante</router-link></li>
+      <li><router-link to="/editar-restaurante">Editar restaurante</router-link></li>
       <li><router-link to="/restaurantes">Restaurantes</router-link></li>
       <li><router-link :to="{name: 'restaurante-destacado', params: {id:16}}">Restaurante destacado</router-link></li>
       <li><router-link to="/contacto">Contacto</router-link></li>
