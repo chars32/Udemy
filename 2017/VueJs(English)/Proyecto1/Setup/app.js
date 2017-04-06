@@ -47,7 +47,7 @@ new Vue({
       this.playerHealth -= damage;
       this.checkWin();
       this.turns.unshift({
-        isPlayer: true,
+        isPlayer: false,
         text: 'Monster hits player for ' + damage
       });
     },
