@@ -13,14 +13,15 @@
             type="number"
             class="form-control"
             placeholder="Quantity"
-            v-model.number="quantity">
+            v-model.number="quantity"
+            v-bind:class="{ danger: insufficientFunds}">
         </div>
         <div class="pull-right">
           <button 
             class="btn btn-success"
             v-on:click="buyStock"
-            v-bind:disabled="quantity <= 0 || !Number.isInteger(quantity)">
-            Buy
+            v-bind:disabled="insufficientFunds || quantity <= 0 || !Number.isInteger(quantity)">
+            {{ insufficientFunds ? 'No Funds' : 'Buy'}}
           </button>
         </div>
       </div>
@@ -28,12 +29,26 @@
   </div>
 </template>
 
+<style scoped>
+  .danger {
+    border: 1px solid red;
+  }
+</style>
+
 <script>
   export default {
     props: ['stock'],
     data() {
       return {
         quantity: 0
+      }
+    },
+    computed: {
+      funds() {
+        return this.$store.getters.funds;
+      },
+      insufficientFunds() {
+        return this.quantity * this.stock.price > this.funds;
       }
     },
     methods: {

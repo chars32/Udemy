@@ -13,20 +13,27 @@
             type="number"
             class="form-control"
             placeholder="Quantity"
-            v-model.number="quantity">
+            v-model.number="quantity"
+            v-bind:class="{ danger: insufficientQuantity }">
         </div>
         <div class="pull-right">
           <button 
             class="btn btn-success"
             v-on:click="sellStock"
-            v-bind:disabled="quantity <= 0 || !Number.isInteger(quantity)">
-            Sell
+            v-bind:disabled="insufficientQuantity || quantity <= 0 || !Number.isInteger(quantity)">
+            {{ insufficientQuantity ? 'No stocks' : 'Sell'}}
           </button>
         </div>
       </div>
     </div>
   </div>
 </template>
+
+<style scoped>
+  .danger {
+    border: 1px solid red;
+  }
+</style>
 
 <script>
   import { mapActions } from 'vuex'
@@ -35,6 +42,11 @@
     data() {
       return {
         quantity: 0
+      }
+    },
+    computed: {
+      insufficientQuantity() {
+        return this.quantity > this.stock.quantity;
       }
     },
     methods: {
