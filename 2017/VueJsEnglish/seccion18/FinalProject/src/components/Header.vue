@@ -26,7 +26,7 @@
             </a>
             <ul class="dropdown-menu">
               <li><a href="#" v-on:click="saveData">Save Data</a></li>
-              <li><a href="#">Load Data</a></li>
+              <li><a href="#"  v-on:click="loadData">Load Data</a></li>
             </ul>
           </li>
         </ul>
@@ -63,6 +63,9 @@
           stockPortfolio: this.$store.getters.stockPortfolio
         }
         this.$http.put('data.json', data);
+      },
+      loadData() {
+        
       }
     }
   }
